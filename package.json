@@ -2,7 +2,7 @@
   "name": "newsscraperepo",
   "version": "1.0.0",
   "description": "An application that allows users to read and comment on news articles",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,5 +15,15 @@
   "bugs": {
     "url": "https://github.com/DennyWu908/newsScrapeRepo/issues"
   },
-  "homepage": "https://github.com/DennyWu908/newsScrapeRepo#readme"
+  "homepage": "https://github.com/DennyWu908/newsScrapeRepo#readme",
+  "dependencies": {
+    "axios": "^0.17.0",
+    "body-parser": "^1.18.2",
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.16.2",
+    "express-handlebars": "^3.0.0",
+    "mongoose": "^4.12.4",
+    "morgan": "^1.9.0",
+    "request": "^2.83.0"
+  }
 }
