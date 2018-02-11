@@ -18,9 +18,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static("public"));
 
 mongoose.Promise = Promise;
-mongoose.connect("mongodb://localhost/newsscrapeassignment", {
+mongoose.connect("mongodb://localhost/newsDB", {
   useMongoClient: true
 });
+
+var DB = mongoose.connection
+DB.on("error", err => console.log(err))
+DB.once("open", () => console.log("Mongoose connection successful."))
 
 app.get("/index", function(req, res) {
 	
@@ -29,13 +33,22 @@ app.get("/index", function(req, res) {
 
 		$("div.headline").each(function(i, element) {
 			
-			var result = {
-				title: $(this).text(),
-				summary: $("div.blurb.normal.normal-style").text()
-			}
-			console.log(result)
+			if ($(this).children("a").attr("href")) {
 
+				var articleData = {
+					headline: $(this).text(),
+					summary: $("div.blurb.normal.normal-style").text(),
+					url: $(this).children("a").attr("href"),
+					saved: false
+				}
+
+				db.Article.create(articleData).catch(err => {console.log(err)})
+
+			}
 		})
+
+		// console.log(articleData)
+
 	})
 
 })
