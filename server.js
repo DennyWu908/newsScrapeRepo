@@ -47,8 +47,6 @@ app.get("/index", function(req, res) {
 			}
 		})
 
-		// console.log(articleData)
-
 	})
 
 })
